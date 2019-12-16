@@ -82,6 +82,8 @@ class Configuration:
                 f"The supervisor mode must be one of these: {SUPERVISOR_MODES}, "
                 f"but '{self.supervisor_mode}' was given."
             )
+        elif self.supervisor_mode != "decentralized":
+            raise RuntimeError("Configuration change for decentralized supervisor mode isn't yet supported.")
         self.actual_from = data.get("actual_from", 0)
         self.artifacts: Dict[str, Artifact] = dict()
         self.instances: List[Instance] = list()
